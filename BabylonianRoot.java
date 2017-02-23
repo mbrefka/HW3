@@ -34,7 +34,7 @@ public class BabylonianRoot
     if ((guess*guess)-squareRoot <= error)
       return guess;
     else 
-      guess=(guess+(squareRoot/guess))/2;
+      br.setGuess();
       return sqrt(squareRoot, guess, error);
     
  
@@ -43,9 +43,7 @@ public class BabylonianRoot
   public static void main(String [] args) 
   {
     BabylonianRoot br = new BabylonianRoot();
-
     br.getRoot();
-    
     br.guessValue();
     
     
