@@ -1,39 +1,56 @@
 import java.util.Scanner;
 public class BabylonianRoot
 {
-  private float squareRoot;
-  private float guess;
-  private float original;
-  private float outcome;
-  private float last;
-  private float answer;
+    private double squareRoot;
+    private double guess;
+    private double lastGuess;
+    private double newGuess;
+    private double error;
+    private double answer;
+    Scanner keyboard = new Scanner(System.in);
+    
+  private void getRoot()
+  {
+    System.out.println("What would you like the square root of?");
+    squareRoot = keyboard.nextDouble();
+    
+  }
   
+  private void guessValue() {
+    System.out.println("What do you guess the square root is?");
+    guess= keyboard.nextDouble();
+    System.out.println("How much error do you allow?");
+    error= keyboard.nextDouble();
+  }
+    
+  private void setGuess()
+  {
+    lastGuess=guess;
+    newGuess=(guess+(squareRoot/guess))/2;
+    guess=newGuess;
+  }
+  
+  public double sqrt(double squareRoot, double guess, double error) {
+    if ((guess*guess)-squareRoot <= error)
+      return guess;
+    else 
+      guess=(guess+(squareRoot/guess))/2;
+      return sqrt(squareRoot, guess, error);
+    
+ 
+  }
+    
   public static void main(String [] args) 
   {
-    Scanner keyboard = new Scanner(System.in);
-    System.out.println("What would you like the square root of?");
-    float squareRoot = keyboard.nextFloat();
-    System.out.println("What do you guess the square root is?");
-    float guess= keyboard.nextFloat();
-  }
-  
-  public static float sqrt(float squareRoot)
-  {
-    last = original;
-    original = (1/2)*(guess + (squareRoot/guess));
+    BabylonianRoot br = new BabylonianRoot();
+
+    br.getRoot();
     
-    if (last == outcome) {
-      return last;
-    }
-    else {
-      return (1/2)*(last + (squareRoot/last));
-    }
-    System.out.println(sqrt(4)); 
+    br.guessValue();
+    
+    
   }
 }
-  
-  
-  
   
   /*
     System.out.println(squareRoot);
