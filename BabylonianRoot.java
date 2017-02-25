@@ -47,7 +47,6 @@ public class BabylonianRoot
     br.guessValue();
     br.sqrt();
   }
-  
 }
   
   
